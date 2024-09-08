@@ -7,7 +7,7 @@ const Boxes = ({ list }) => {
       {list?.map((item, index) => {
         const animation = { type: "spring", damping: 20, stiffness: 300 };
         return (
-          <div>
+          <div key={index}>
             <motion.div
               id={index}
               key={index}

@@ -25,7 +25,7 @@ const Bars = ({ list }) => {
           stiffness: 300,
         };
         return (
-          <div>
+          <div key={index}>
             <motion.div
               id={index}
               key={index}
