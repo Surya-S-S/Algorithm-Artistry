@@ -1,0 +1,51 @@
+.listBlocks {
+  display: flex;
+  padding: 15px;
+  text-align: center;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.listBlocks .block {
+  background-color: var(--unsorted);
+  color: var(--text-dark);
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0px 3px;
+  text-align: center;
+}
+
+.listBlocks .quantity {
+  background-color: var(--unsorted);
+  color: var(--text-dark);
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 3px 3px;
+  padding: 7px;
+  text-align: center;
+}
+
+.listBlocks .unselectedBlock {
+  background-color: var(--unsorted);
+}
+
+.listBlocks .selectedBlock {
+  background-color: var(--selected);
+}
+
+.listBlocks .sortedBlock {
+  background-color: var(--sorted);
+}
+
+.listBlocks .swappedBlock {
+  background-color: var(--swapped);
+}
+
+.listBlocks .pivotBlock {
+  background-color: var(--pivot);
+}

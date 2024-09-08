@@ -1,0 +1,8 @@
+.board {
+  display: flex;
+  justify-content: center;
+  height: 35rem;
+  border: 1px solid var(--border);
+  border-radius: 3rem;
+  background-color: var(--hovered);
+}
