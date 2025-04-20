@@ -8,11 +8,17 @@ import styles from "./page.module.css";
 const LinkedListPage = () => {
   const [list, setList] = useState([]);
   const [result, setResult] = useState([]);
-  const maxSize = Math.floor(window.innerWidth / 120);
+  const [maxSize, setMaxSize] = useState(0);
   const maxSpeed = 1000;
   const [speed, setSpeed] = useState(maxSpeed - 250);
   const [algo, setAlgo] = useState("Algorithms");
   const [head, setHead] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setMaxSize(Math.floor(window.innerWidth / 120));
+    }
+  }, []);
 
   const randomizeList = (len) => {
     const elements = Array.from(Array(len).keys()).splice(1);
@@ -111,7 +117,7 @@ const LinkedListPage = () => {
 
   useEffect(() => {
     randomizeList(maxSize);
-  }, []);
+  }, [maxSize]);
 
   return (
     <div>

@@ -13,7 +13,14 @@ const StackPage = () => {
   const [list, setList] = useState([]);
   const [stackView, setStackView] = useState([]);
   const [result, setResult] = useState([]);
-  const maxSize = Math.floor(window.innerWidth / 95);
+  const [maxSize, setMaxSize] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setMaxSize(Math.floor(window.innerWidth / 95));
+    }
+  }, []);
+
   const [size, setSize] = useState(maxSize);
   const maxSpeed = 750;
   const [speed, setSpeed] = useState(maxSpeed - 375);
