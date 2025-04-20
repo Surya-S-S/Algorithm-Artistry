@@ -1,36 +1,36 @@
-const SelectionSort = (arr) => {
-  let len = arr.length;
+const SelectionSort = (list) => {
+  let len = list.length();
   let results = [];
   for (let i = 0; i < len; i++) {
     let minIdx = i;
-    arr[i].style = "selectedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    list.select(i);
+    results.push(JSON.parse(list.serialize()));
     for (let j = i + 1; j < len; j++) {
-      arr[j].style = "selectedBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
-      if (arr[j]?.value < arr[minIdx]?.value) {
-        if (minIdx != i) arr[minIdx].style = "unselectedBlock";
+      list.select(j);
+      results.push(JSON.parse(list.serialize()));
+      if (list.arr[j]?.value < list.arr[minIdx]?.value) {
+        if (minIdx != i) list.unselect(minIdx);
         minIdx = j;
-        arr[minIdx].style = "pivotBlock";
-        results.push(JSON.parse(JSON.stringify(arr)));
+        list.pivot(minIdx);
+        results.push(JSON.parse(list.serialize()));
       } else {
-        arr[j].style = "unselectedBlock";
-        results.push(JSON.parse(JSON.stringify(arr)));
+        list.unselect(j);
+        results.push(JSON.parse(list.serialize()));
       }
     }
     if (minIdx != i) {
-      let tmp = arr[i];
-      arr[i] = arr[minIdx];
-      arr[minIdx] = tmp;
-      arr[i].style = "pivotBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
+      let tmp = list.arr[i];
+      list.arr[i] = list.arr[minIdx];
+      list.arr[minIdx] = tmp;
+      list.pivot(i);
+      results.push(JSON.parse(list.serialize()));
     }
-    arr[i].style = "sortedBlock";
-    arr[minIdx].style = "unselectedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    list.sorted(i);
+    list.unselect(minIdx);
+    results.push(JSON.parse(list.serialize()));
   }
-  arr[len - 1].style = "sortedBlock";
-  results.push(JSON.parse(JSON.stringify(arr)));
+  list.sorted(len - 1);
+  results.push(JSON.parse(list.serialize()));
   return results;
 };
 

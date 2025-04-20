@@ -1,0 +1,32 @@
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    height: 35rem;
+    width: 50%;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+}
+
+.titleCard {
+    color: black;
+    background-color: #b4b4b4;
+    height: 100px;
+    width: 130px;
+    margin: 20px;
+    border: 1px solid #b4b4b4;
+    border-radius: 10px;
+}

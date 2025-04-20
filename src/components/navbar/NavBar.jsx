@@ -5,7 +5,8 @@ import styles from "./NavBar.module.css";
 const NavBar = ({ heading, options, actions }) => {
   return (
     <div className={styles.navBar}>
-      <div>
+      <div className={styles.title}>
+        <Button option={{ label: "<" }} />
         <h2>{heading}</h2>
       </div>
       <div className={styles.options}>

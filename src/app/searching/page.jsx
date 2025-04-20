@@ -1,6 +1,7 @@
 "use client";
 import Boxes from "@/components/boxes/Boxes";
 import NavBar from "@/components/navbar/NavBar";
+import { List } from "@/utils/List";
 import { useEffect, useState } from "react";
 import BinarySearch from "./algorithms/BinarySearch";
 import LinearSearch from "./algorithms/LinearSearch";
@@ -8,11 +9,12 @@ import styles from "./page.module.css";
 
 const SearchingPage = () => {
   const [list, setList] = useState([]);
-  const maxSize = 127;
+  const maxSize = Math.floor(window.innerWidth / 12.09);
   const [size, setSize] = useState(maxSize);
   const maxSpeed = 500;
   const [speed, setSpeed] = useState(maxSpeed - 250);
   const [algo, setAlgo] = useState("Algorithms");
+  const [arr, setArr] = useState([]);
 
   const randomizeList = (len) => {
     const elements = Array.from(Array(len).keys()).splice(1);
@@ -22,14 +24,16 @@ const SearchingPage = () => {
       elements[i - 1] = elements[randomIndex];
       elements[randomIndex] = tmp;
     }
-    let randomList = [];
+    const arrayList = new List("Block");
     elements.forEach((element) => {
-      randomList.push({
+      arrayList.addBack({
         value: element,
         id: "id-" + element,
       });
     });
-    setList(randomList);
+
+    setArr(arrayList);
+    setList(arrayList.arr);
   };
 
   const selectAlgo = (algorithm) => {
@@ -39,9 +43,9 @@ const SearchingPage = () => {
   const searchList = (searchElement) => {
     let result = [];
     if (algo == "Linear Search") {
-      result = LinearSearch(list, searchElement);
+      result = LinearSearch(arr, searchElement);
     } else if (algo == "Binary Search") {
-      result = BinarySearch(list, searchElement);
+      result = BinarySearch(arr, searchElement);
     }
     let n = result.length;
     for (let i = 0; i < n; i++) {
@@ -72,10 +76,7 @@ const SearchingPage = () => {
     { id: "search", label: "Search", type: "inputButton", searchList },
   ];
 
-  const handleClick = (
-    item,
-    searchElement = 1
-  ) => {
+  const handleClick = (item, searchElement = 1) => {
     switch (item?.id) {
       case "randomize": {
         randomizeList(size);
@@ -116,7 +117,9 @@ const SearchingPage = () => {
     <div>
       <NavBar heading={heading} options={options} actions={actions} />
       <div className={styles.board}>
-        <Boxes list={list} />
+        <div className={styles.blockSpace}>
+          <Boxes list={list} />
+        </div>
       </div>
     </div>
   );

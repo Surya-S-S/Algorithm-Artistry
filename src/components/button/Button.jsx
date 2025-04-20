@@ -1,8 +1,11 @@
+"use client";
 import { motion } from "framer-motion";
-import styles from "./Button.module.css";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import styles from "./Button.module.css";
 
 const Button = ({ option, handleClick, hasInput }) => {
+  const router = useRouter();
   const [value, setValue] = useState(1);
   const label = option?.label;
   return (
@@ -13,7 +16,7 @@ const Button = ({ option, handleClick, hasInput }) => {
           whileTap={{ scale: 0.9 }}
           whileHover={{ scale: hasInput ? 1 : 1.1 }}
           onClick={() => {
-            handleClick(option, value);
+            label === "<" ? router.push("/") : handleClick(option, value);
           }}
         >
           {label}

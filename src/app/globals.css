@@ -3,12 +3,12 @@
   --text-dark: black;
   --background: black;
   --border: #2f3336;
-  --hovered: rgba(231, 233, 234, 0.1);
-  --unsorted: #b4b4b4;
-  --selected: #fbbc05;
-  --swapped: #ea4335;
-  --sorted: #4285f4;
-  --pivot: #34a853;
+  --dimmed-background: rgba(231, 233, 234, 0.1);
+  --grey: #b4b4b4;
+  --yellow: #fbbc05;
+  --red: #ea4335;
+  --blue: #4285f4;
+  --green: #34a853;
   --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 

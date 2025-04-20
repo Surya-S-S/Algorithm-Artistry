@@ -1,16 +1,16 @@
-const LinearSearch = (arr, x) => {
-  let len = arr.length;
+const LinearSearch = (list, x) => {
+  let len = list.length();
   let results = [];
   for (let i = 0; i < len; i++) {
-    arr[i].style = "selectedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
-    if (arr[i]?.value == x) {
-      arr[i].style = "matchedBlock";
+    list.select(i);
+    results.push(JSON.parse(list.serialize()));
+    if (list.arr[i]?.value == x) {
+      list.matched(i);
       break;
-    } else arr[i].style = "unmatchedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    } else list.unmatched(i);
+    results.push(JSON.parse(list.serialize()));
   }
-  results.push(JSON.parse(JSON.stringify(arr)));
+  results.push(JSON.parse(list.serialize()));
   return results;
 };
 

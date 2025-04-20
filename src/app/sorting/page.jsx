@@ -1,6 +1,7 @@
 "use client";
 import Bars from "@/components/bars/Bars";
 import NavBar from "@/components/navbar/NavBar";
+import { List } from "@/utils/List";
 import { useEffect, useState } from "react";
 import BubbleSort from "./algorithms/BubbleSort";
 import InsertionSort from "./algorithms/InsertionSort";
@@ -11,11 +12,12 @@ import styles from "./page.module.css";
 
 const SortingPage = () => {
   const [list, setList] = useState([]);
-  const maxSize = 35;
+  const maxSize = Math.floor(window.innerWidth / 45);
   const [size, setSize] = useState(maxSize);
   const maxSpeed = 500;
   const [speed, setSpeed] = useState(maxSpeed - 250);
   const [algo, setAlgo] = useState("Algorithms");
+  const [arr, setArr] = useState([]);
 
   const randomizeList = (len) => {
     const elements = Array.from(Array(len).keys()).splice(1);
@@ -25,14 +27,16 @@ const SortingPage = () => {
       elements[i - 1] = elements[randomIndex];
       elements[randomIndex] = tmp;
     }
-    let randomList = [];
+    const arrayList = new List("Block");
     elements.forEach((element) => {
-      randomList.push({
+      arrayList.addBack({
         value: element,
         id: "id-" + element,
       });
     });
-    setList(randomList);
+
+    setArr(arrayList);
+    setList(arrayList.arr);
   };
 
   const selectAlgo = (algorithm) => {
@@ -42,15 +46,15 @@ const SortingPage = () => {
   const sortList = () => {
     let result = [];
     if (algo == "Bubble Sort") {
-      result = BubbleSort(list);
+      result = BubbleSort(arr);
     } else if (algo == "Insertion Sort") {
-      result = InsertionSort(list);
+      result = InsertionSort(arr);
     } else if (algo == "Selection Sort") {
-      result = SelectionSort(list);
+      result = SelectionSort(arr);
     } else if (algo == "Merge Sort") {
-      result = MergeSort(list);
+      result = MergeSort(arr);
     } else if (algo == "Quick Sort") {
-      result = QuickSort(list);
+      result = QuickSort(arr);
     }
     let n = result.length;
     for (let i = 0; i < n; i++) {

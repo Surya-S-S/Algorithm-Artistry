@@ -1,3 +1,11 @@
+.blockContainer {
+  padding-bottom: 20px;
+}
+
+.title {
+  padding-bottom: 20px;
+}
+
 .listBlocks {
   display: flex;
   flex-direction: row;
@@ -5,16 +13,16 @@
   align-content: center;
   flex-wrap: wrap;
   height: 85%;
-  width: 90%;
+  width: 100%;
   gap: 15px;
-  margin-left: 30px;
+  margin: 15px;
 }
 
 .listBlocks .block {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--unsorted);
+  background-color: var(--grey);
   color: var(--text-dark);
   border: none;
   border-radius: 10px;
@@ -24,22 +32,18 @@
   width: 50px;
 }
 
-.listBlocks .unselectedBlock {
-  background-color: var(--unsorted);
+.listBlocks .greyBlock {
+  background-color: var(--grey);
 }
 
-.listBlocks .selectedBlock {
-  background-color: var(--selected);
+.listBlocks .yellowBlock {
+  background-color: var(--yellow);
 }
 
-.listBlocks .matchedBlock {
-  background-color: var(--sorted);
+.listBlocks .blueBlock {
+  background-color: var(--blue);
 }
 
-.listBlocks .unmatchedBlock {
-  background-color: var(--swapped);
-}
-
-.listBlocks .pivotBlock {
-  background-color: var(--pivot);
+.listBlocks .redBlock {
+  background-color: var(--red);
 }

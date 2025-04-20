@@ -1,0 +1,23 @@
+.board {
+  display: flex;
+  justify-content: center;
+  height: 35rem;
+  border: 1px solid var(--border);
+  border-radius: 3rem;
+  background-color: var(--dimmed-background);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.listSpace {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 85%;
+}
+
+.stackSpace {
+  display: flex;
+  width: 15%;
+}

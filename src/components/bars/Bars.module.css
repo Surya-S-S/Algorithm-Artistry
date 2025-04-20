@@ -7,7 +7,7 @@
 }
 
 .listBlocks .block {
-  background-color: var(--unsorted);
+  background-color: var(--grey);
   color: var(--text-dark);
   display: inline-flex;
   align-items: flex-end;
@@ -19,8 +19,18 @@
   text-align: center;
 }
 
+.listBlocks .closedBlock {
+  display: flex;
+  border-radius: 0px;
+  margin: 0px;
+}
+
+.listBlocks .outline {
+  border: 1px solid var(--background);
+}
+
 .listBlocks .quantity {
-  background-color: var(--unsorted);
+  background-color: var(--grey);
   color: var(--text-dark);
   border-radius: 5px;
   font-size: 10px;
@@ -30,22 +40,27 @@
   text-align: center;
 }
 
-.listBlocks .unselectedBlock {
-  background-color: var(--unsorted);
+.listBlocks .closedQuantity {
+  border-radius: 0px;
+  margin: 0px;
 }
 
-.listBlocks .selectedBlock {
-  background-color: var(--selected);
+.listBlocks .greyBlock {
+  background-color: var(--grey);
 }
 
-.listBlocks .sortedBlock {
-  background-color: var(--sorted);
+.listBlocks .yellowBlock {
+  background-color: var(--yellow);
 }
 
-.listBlocks .swappedBlock {
-  background-color: var(--swapped);
+.listBlocks .blueBlock {
+  background-color: var(--blue);
 }
 
-.listBlocks .pivotBlock {
-  background-color: var(--pivot);
+.listBlocks .redBlock {
+  background-color: var(--red);
+}
+
+.listBlocks .greenBlock {
+  background-color: var(--green);
 }

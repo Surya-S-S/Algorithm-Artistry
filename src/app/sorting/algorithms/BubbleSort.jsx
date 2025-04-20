@@ -1,28 +1,26 @@
-const BubbleSort = (arr) => {
-  let len = arr.length;
+const BubbleSort = (list) => {
+  let len = list.length();
   let results = [];
   for (let i = 0; i < len - 1; i++) {
     for (let j = 0; j < len - i - 1; j++) {
-      arr[j].style = "selectedBlock";
-      arr[j + 1].style = "selectedBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
-      if (arr[j]?.value > arr[j + 1]?.value) {
-        let tmp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = tmp;
-        arr[j].style = "swappedBlock";
-        arr[j + 1].style = "swappedBlock";
-        results.push(JSON.parse(JSON.stringify(arr)));
+      list.select(j);
+      list.select(j + 1);
+      results.push(JSON.parse(list.serialize()));
+      if (list.arr[j]?.value > list.arr[j + 1]?.value) {
+        list.swap(j, j + 1);
+        list.swapped(j);
+        list.swapped(j + 1);
+        results.push(JSON.parse(list.serialize()));
       }
-      arr[j].style = "unselectedBlock";
-      arr[j + 1].style = "unselectedBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
+      list.unselect(j);
+      list.unselect(j + 1);
+      results.push(JSON.parse(list.serialize()));
     }
-    arr[len - i - 1].style = "sortedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    list.sorted(len - i - 1);
+    results.push(JSON.parse(list.serialize()));
   }
-  arr[0].style = "sortedBlock";
-  results.push(JSON.parse(JSON.stringify(arr)));
+  list.sorted(0);
+  results.push(JSON.parse(list.serialize()));
   return results;
 };
 

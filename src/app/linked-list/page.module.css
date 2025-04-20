@@ -1,0 +1,12 @@
+.board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 35rem;
+    border: 1px solid var(--border);
+    border-radius: 3rem;
+    background-color: var(--dimmed-background);
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 0 95px;
+}

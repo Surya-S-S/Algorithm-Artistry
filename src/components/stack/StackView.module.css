@@ -1,0 +1,57 @@
+.stack {
+    height: 400px;
+    width: 100px;
+    border: 2px solid var(--border);
+    border-radius: 0px 0px 10px 10px;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.listBlocks {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 85%;
+    width: 90%;
+    gap: 15px;
+    margin-left: 30px;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 50px;
+    width: 50px;
+    margin: 10px 23px;
+}
+
+.listBlocks .greyBlock {
+    background-color: var(--grey);
+}
+
+.listBlocks .yellowBlock {
+    background-color: var(--yellow);
+}
+
+.listBlocks .blueBlock {
+    background-color: var(--blue);
+}
+
+.listBlocks .redBlock {
+    background-color: var(--red);
+}
+
+.title {
+    padding: 10px 27px;
+}

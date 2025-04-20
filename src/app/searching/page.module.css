@@ -4,7 +4,11 @@
   height: 35rem;
   border: 1px solid var(--border);
   border-radius: 3rem;
-  background-color: var(--hovered);
+  background-color: var(--dimmed-background);
   align-items: center;
   flex-wrap: wrap;
+}
+
+.blockSpace {
+  width: 90%;
 }

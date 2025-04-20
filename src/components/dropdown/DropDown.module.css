@@ -26,7 +26,7 @@
     margin-top: 55px;
     border-radius: 15px;
     border: 1px solid var(--border);
-    min-width: 160px;
+    min-width: 200px;
     background-color: var(--background);
     box-shadow: 0px 8px 16px 0px rgba(180, 180, 180, 0.2);
     z-index: 1;
@@ -42,7 +42,7 @@
 }
 
 .dropDownContent a:hover {
-    background-color: var(--hovered);
+    background-color: var(--dimmed-background);
     color: var(--text);
 }
 
@@ -51,7 +51,7 @@
 }
 
 .dropDown:hover .dropDownButton {
-    background-color: var(--hovered);
+    background-color: var(--dimmed-background);
 }
 
 .displayDropDownContent {

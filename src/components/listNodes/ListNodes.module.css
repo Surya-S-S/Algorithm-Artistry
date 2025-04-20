@@ -1,0 +1,19 @@
+.listWrapper,
+.title {
+    padding-bottom: 35px;
+}
+
+.listContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+
+.nodeContainer {
+    display: inline-flex;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+}

@@ -12,7 +12,7 @@
 }
 
 .buttonWrapper:hover .button {
-    background-color: var(--hovered);
+    background-color: var(--dimmed-background);
 }
 
 .wrapper {
@@ -30,5 +30,5 @@
     border-radius: 0 15px 15px 0;
     text-align: center;
     outline: none;
-    background-color: var(--unsorted);
+    background-color: var(--grey);
 }

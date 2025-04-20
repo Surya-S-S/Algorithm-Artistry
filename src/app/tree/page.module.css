@@ -1,0 +1,26 @@
+.board {
+    height: 35rem;
+    border: 1px solid var(--border);
+    border-radius: 3rem;
+    background-color: var(--dimmed-background);
+    padding: 0 95px;
+}
+
+.node {
+    r: 20px;
+    stroke-width: 2px;
+}
+
+.greyNode {
+    fill: var(--grey);
+}
+
+.blueNode {
+    fill: var(--blue);
+}
+
+.text {
+    fill: none;
+    stroke: var(--text-dark);
+    stroke-width: 1px;
+}

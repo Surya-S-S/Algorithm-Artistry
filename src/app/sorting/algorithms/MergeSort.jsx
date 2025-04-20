@@ -1,26 +1,26 @@
-const merge = (arr, l, m, r, results) => {
-  for (let i = l; i <= r; i++) arr[i].style = "selectedBlock";
-  results.push(JSON.parse(JSON.stringify(arr)));
+const merge = (list, l, m, r, results) => {
+  for (let i = l; i <= r; i++) list.select(i);
+  results.push(JSON.parse(list.serialize()));
   let l1 = l,
     r1 = m;
   let l2 = m + 1,
     r2 = r;
-  if (arr[r1]?.value <= arr[l2]?.value) {
+  if (list.arr[r1]?.value <= list.arr[l2]?.value) {
     return;
   }
   while (l1 <= r1 && l2 <= r2) {
-    if (arr[l1]?.value <= arr[l2]?.value) {
+    if (list.arr[l1]?.value <= list.arr[l2]?.value) {
       l1++;
     } else {
-      let value = arr[l2];
+      let value = list.arr[l2];
       let idx = l2;
       while (idx != l1) {
-        arr[idx] = arr[idx - 1];
+        list.arr[idx] = list.arr[idx - 1];
         idx--;
       }
-      arr[l1] = value;
-      arr[l1].style = "swappedBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
+      list.arr[l1] = value;
+      list.swapped(l1);
+      results.push(JSON.parse(list.serialize()));
       l1++;
       l2++;
       r1++;
@@ -28,24 +28,24 @@ const merge = (arr, l, m, r, results) => {
   }
 };
 
-const sort = (arr, l, r, results) => {
+const sort = (list, l, r, results) => {
   if (l < r) {
     let m = l + Math.floor((r - l) / 2);
-    sort(arr, l, m, results);
-    sort(arr, m + 1, r, results);
-    merge(arr, l, m, r, results);
-    for (let i = l; i <= r; i++) arr[i].style = "unselectedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    sort(list, l, m, results);
+    sort(list, m + 1, r, results);
+    merge(list, l, m, r, results);
+    for (let i = l; i <= r; i++) list.unselect(i);
+    results.push(JSON.parse(list.serialize()));
   }
 };
 
-const MergeSort = (arr) => {
-  let len = arr.length;
+const MergeSort = (list) => {
+  let len = list.length();
   let results = [];
-  sort(arr, 0, len - 1, results);
+  sort(list, 0, len - 1, results);
   for (let i = 0; i < len; i++) {
-    arr[i].style = "sortedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    list.sorted(i);
+    results.push(JSON.parse(list.serialize()));
   }
   return results;
 };

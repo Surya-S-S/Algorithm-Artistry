@@ -1,29 +1,27 @@
-const InsertionSort = (arr) => {
-  let len = arr.length;
+const InsertionSort = (list) => {
+  let len = list.length();
   let results = [];
   for (let i = 1; i < len; i++) {
     let j = i;
-    arr[i].style = "selectedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
-    while (j >= 0 && arr[j - 1]?.value > arr[j]?.value) {
-      arr[j].style = "selectedBlock";
-      arr[j - 1].style = "selectedBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
-      let tmp = arr[j - 1];
-      arr[j - 1] = arr[j];
-      arr[j] = tmp;
-      arr[j].style = "swappedBlock";
-      arr[j - 1].style = "swappedBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
-      arr[j].style = "unselectedBlock";
-      arr[j - 1].style = "unselectedBlock";
-      results.push(JSON.parse(JSON.stringify(arr)));
+    list.select(i);
+    results.push(JSON.parse(list.serialize()));
+    while (j >= 0 && list.arr[j - 1]?.value > list.arr[j]?.value) {
+      list.select(j);
+      list.select(j - 1);
+      results.push(JSON.parse(list.serialize()));
+      list.swap(j, j - 1);
+      list.swapped(j);
+      list.swapped(j - 1);
+      results.push(JSON.parse(list.serialize()));
+      list.unselect(j);
+      list.unselect(j - 1);
+      results.push(JSON.parse(list.serialize()));
       j--;
     }
   }
   for (let i = 0; i < len; i++) {
-    arr[len - i - 1].style = "sortedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    list.sorted(len - i - 1);
+    results.push(JSON.parse(list.serialize()));
   }
   return results;
 };

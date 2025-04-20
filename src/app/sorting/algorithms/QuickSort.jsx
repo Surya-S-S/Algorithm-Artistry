@@ -1,64 +1,60 @@
-const swap = (arr, a, b) => {
-  let tmp = arr[a];
-  arr[a] = arr[b];
-  arr[b] = tmp;
-};
-
-const partition = (arr, s, e, results) => {
+const partition = (list, s, e, results) => {
   let pivot = s;
   let l = s + 1,
     r = e;
   while (l <= r) {
-    arr[l].style = "selectedBlock";
-    arr[r].style = "selectedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
-    if (arr[l]?.value <= arr[pivot]?.value) l++;
-    else if (arr[r]?.value > arr[pivot]?.value) r--;
+    list.select(l);
+    list.select(r);
+    results.push(JSON.parse(list.serialize()));
+    if (list.arr[l]?.value <= list.arr[pivot]?.value) l++;
+    else if (list.arr[r]?.value > list.arr[pivot]?.value) r--;
     else {
-      swap(arr, l, r);
+      list.swap(l, r);
+      list.swapped(l);
+      list.swapped(r);
       l++;
       r--;
     }
-    results.push(JSON.parse(JSON.stringify(arr)));
+    results.push(JSON.parse(list.serialize()));
   }
   for (let i = s; i <= e; i++) {
-    if (i != r) arr[i].style = "unselectedBlock";
+    if (i != r) list.unselect(i);
   }
-  results.push(JSON.parse(JSON.stringify(arr)));
-  swap(arr, pivot, r);
-  arr[pivot].style = "unselectedBlock";
-  arr[r].style = "sortedBlock";
-  results.push(JSON.parse(JSON.stringify(arr)));
+  results.push(JSON.parse(list.serialize()));
+  list.swap(pivot, r);
+  list.unselect(pivot);
+  list.sorted(r);
+  results.push(JSON.parse(list.serialize()));
   return r;
 };
 
-const randomizePivot = (arr, l, r, results) => {
+const randomizePivot = (list, l, r, results) => {
   let random = l + Math.floor(Math.random() * (r - l));
-  arr[l].style = "selectedBlock";
-  arr[random].style = "selectedBlock";
-  results.push(JSON.parse(JSON.stringify(arr)));
-  swap(arr, l, random);
-  arr[l].style = "pivotBlock";
-  arr[random].style = "unselectedBlock";
-  results.push(JSON.parse(JSON.stringify(arr)));
+  list.select(l);
+  list.select(random);
+  results.push(JSON.parse(list.serialize()));
+  list.swap(l, random);
+  list.pivot(l);
+  list.unselect(random);
+  results.push(JSON.parse(list.serialize()));
 };
 
-const sort = (arr, l, r, results) => {
+const sort = (list, l, r, results) => {
   if (l < r) {
-    randomizePivot(arr, l, r, results);
-    let p = partition(arr, l, r, results);
-    sort(arr, l, p - 1, results);
-    sort(arr, p + 1, r, results);
+    randomizePivot(list, l, r, results);
+    let p = partition(list, l, r, results);
+    sort(list, l, p - 1, results);
+    sort(list, p + 1, r, results);
   }
 };
 
-const QuickSort = (arr) => {
-  let len = arr.length;
+const QuickSort = (list) => {
+  let len = list.length();
   let results = [];
-  sort(arr, 0, len - 1, results);
+  sort(list, 0, len - 1, results);
   for (let i = 0; i < len; i++) {
-    arr[i].style = "sortedBlock";
-    results.push(JSON.parse(JSON.stringify(arr)));
+    list.sorted(i);
+    results.push(JSON.parse(list.serialize()));
   }
   return results;
 };

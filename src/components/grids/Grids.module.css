@@ -1,0 +1,50 @@
+.matrixContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.rowContainer {
+    display: inline-flex;
+    width: max-content;
+}
+
+.gridCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    width: 25px;
+    margin: 5px;
+}
+
+.greyCell {
+    background-color: var(--grey);
+}
+
+.blueCell {
+    background-color: var(--blue);
+}
+
+.blackCell {
+    background-color: var(--text-dark);
+}
+
+.greenCell {
+    background-color: var(--green);
+}
+
+.redCell {
+    background-color: var(--red);
+}
+
+.yellowCell {
+    background-color: var(--yellow);
+}
