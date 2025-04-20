@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 const LinkedListPage = () => {
   const [list, setList] = useState([]);
   const [result, setResult] = useState([]);
-  const maxSize = Math.floor(window.innerWidth / 120);
+  const maxSize = 12;
   const maxSpeed = 1000;
   const [speed, setSpeed] = useState(maxSpeed - 250);
   const [algo, setAlgo] = useState("Algorithms");

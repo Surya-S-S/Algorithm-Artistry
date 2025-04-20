@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 
 const SearchingPage = () => {
   const [list, setList] = useState([]);
-  const maxSize = Math.floor(window.innerWidth / 12.09);
+  const maxSize = 127;
   const [size, setSize] = useState(maxSize);
   const maxSpeed = 500;
   const [speed, setSpeed] = useState(maxSpeed - 250);
